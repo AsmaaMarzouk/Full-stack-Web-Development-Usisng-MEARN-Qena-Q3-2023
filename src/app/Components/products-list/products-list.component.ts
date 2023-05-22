@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Iproduct } from 'src/app/Models/iproduct';
 
 @Component({
@@ -16,17 +16,28 @@ export class ProductsListComponent implements OnInit {
   filteredProducts: Iproduct[] = [];
   //  filter
   private _listFilter: string = '';
+
+  // Day3
   // get => as property
-  get listFilter(): string {
+  // property decorator
+  @Input() get listFilterInChild(): string {
     return this._listFilter;
   }
-  set listFilter(value: string) {
+  set listFilterInChild(value: string) {
     this._listFilter = value;
     console.log('In setter', value);
     this.filteredProducts = this.performFilter(value);
     console.log(this.filteredProducts);
   }
 
+  // Day3
+  // event
+  // declare => eventName
+ @Output() SortedPrdsEvent:EventEmitter<Iproduct[]>=new EventEmitter<Iproduct[]>();
+
+
+//  Date
+todayDate:Date=new Date();
   constructor() {
     // categoryID
     //1=> tables   , 2=>chairs    ,3=> tv units
@@ -124,9 +135,8 @@ export class ProductsListComponent implements OnInit {
     ];
   }
   ngOnInit(): void {
-
     // this.filteredProducts=Array.from(this.productsList);
-    this.filteredProducts=this.productsList;
+    this.filteredProducts = this.productsList;
   }
 
   toggleImage() {
@@ -134,9 +144,26 @@ export class ProductsListComponent implements OnInit {
   }
 
   performFilter(filterBy: string): Iproduct[] {
-    filterBy=filterBy.toLocaleLowerCase();
+    filterBy = filterBy.toLocaleLowerCase();
     return this.productsList.filter((prd: Iproduct) =>
       prd.name.toLocaleLowerCase().includes(filterBy)
     );
+  }
+
+  sortPrds() {
+    let sortedProducts = this.productsList.sort((a, b) => {
+      if (a.name < b.name) {
+        return -1;
+      }
+      if (a.name > b.name) {
+        return 1;
+      }
+      return 0;
+    });
+
+    // console.log(sortedProducts);
+
+    // fire event
+    this.SortedPrdsEvent.emit(sortedProducts);
   }
 }

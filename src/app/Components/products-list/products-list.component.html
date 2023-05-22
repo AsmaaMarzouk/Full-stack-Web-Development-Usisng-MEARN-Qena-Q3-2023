@@ -1,16 +1,26 @@
+<!-- ############################################ -->
+<!-- <h1>Date : {{todayDate|date:'fullDate'}}</h1> -->
+<!-- ############################################ -->
+
 <button class="btn btn-primary mb-3" (click)="toggleImage()">
   {{showImage?'Hide':'Show'}} Image
 </button>
 
 
+<div class="d-flex mb-4">
+  <h3>Sort From A to Z : </h3>
+  <button class="border-0" style="background-color: white;" (click)="sortPrds()"><i class="fa-solid fa-arrow-up-a-z"
+      style="color:blue;font-size:35px"></i></button>
+</div>
+
 <div class="row">
 
 
-  <div class="row">
-    <div class="col-md-2">Filter By: </div>
-    <!-- <div class="col-md-4"><input type="text" class="form-control" [value]="userName"> </div> -->
-    <!-- <div class="col-md-4"><input type="text" class="form-control" [(ngModel)]="userName"> </div> -->
-    <div class="col-md-4"><input type="text" class="form-control" [(ngModel)]="listFilter"> </div>
+  <!-- <div class="row">
+    <div class="col-md-2">Filter By: </div> -->
+  <!-- <div class="col-md-4"><input type="text" class="form-control" [value]="userName"> </div> -->
+  <!-- <div class="col-md-4"><input type="text" class="form-control" [(ngModel)]="userName"> </div> -->
+  <!-- <div class="col-md-4"><input type="text" class="form-control" [(ngModel)]="listFilter"> </div>
 
     <div class="row">
       <div class="col-md-6">
@@ -19,7 +29,7 @@
 
     </div>
 
-  </div>
+  </div> -->
   <!-- class binding -->
   <!-- <div class="col-sm-4" *ngFor="let item of productsList" [class.text-danger]="item.price>15000" [class.bg-info]="item.price>10000"> -->
 
@@ -42,9 +52,11 @@
       <!-- <img src="{{item.PrdimgURL}}" class="img-fluid"> -->
 
       <!-- property binding -->
-      <img [src]="item.PrdimgURL" class="img-fluid" *ngIf="showImage">
-      <h4>{{item.name}}</h4>
-      <h5>{{item.price}}</h5>
+      <img [src]="item.PrdimgURL" class="img-fluid" *ngIf="showImage" ImgStyle="5px" radius1="30px">
+      <h4>{{item.name | uppercase}}</h4>
+      <!-- <h5>{{item.price | currency:'EGP':'code'}}</h5> -->
+      <h5 class="text-decoration-line-through">{{item.price | currency:'USD':'symbol'}}</h5>
+      <h5>{{item.price | calcDiscount:75 | currency}}</h5>
       <!-- <div> -->
       <!-- <div [ngSwitch]="item.categoryID">
           <div *ngSwitchCase="1">Tables</div>
