@@ -7,11 +7,11 @@
 </button>
 
 
-<div class="d-flex mb-4">
+<!-- <div class="d-flex mb-4">
   <h3>Sort From A to Z : </h3>
   <button class="border-0" style="background-color: white;" (click)="sortPrds()"><i class="fa-solid fa-arrow-up-a-z"
       style="color:blue;font-size:35px"></i></button>
-</div>
+</div> -->
 
 <div class="row">
 
@@ -48,7 +48,7 @@
   <!-- <div class="col-sm-4 mb-4" *ngFor="let item of filteredProducts" *ngIf="item.price>12000">error -->
   <ng-container *ngFor="let item of filteredProducts">
     <!-- <div class="col-sm-4 mb-4" *ngIf="item.price>12000"> -->
-    <div class="col-sm-4 mb-4">
+    <div class="col-sm-4 mb-4" (click)="prdDetails(item.id)">
       <!-- <img src="{{item.PrdimgURL}}" class="img-fluid"> -->
 
       <!-- property binding -->

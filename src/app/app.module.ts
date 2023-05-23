@@ -11,6 +11,10 @@ import { FormsModule } from '@angular/forms';
 import { ProductParentComponent } from './Components/product-parent/product-parent.component';
 import { ImgStyleDirective } from './Directives/img-style.directive';
 import { CalcDiscountPipe } from './Pipes/calc-discount.pipe';
+import { AboutusComponent } from './Components/aboutus/aboutus.component';
+import { NotFoundPageComponent } from './Components/not-found-page/not-found-page.component';
+import { GroupOfRoutesComponent } from './Components/group-of-routes/group-of-routes.component';
+import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,11 @@ import { CalcDiscountPipe } from './Pipes/calc-discount.pipe';
     ProductsListComponent,
     ProductParentComponent,
     ImgStyleDirective,
-    CalcDiscountPipe
+    CalcDiscountPipe,
+    AboutusComponent,
+    NotFoundPageComponent,
+    GroupOfRoutesComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
