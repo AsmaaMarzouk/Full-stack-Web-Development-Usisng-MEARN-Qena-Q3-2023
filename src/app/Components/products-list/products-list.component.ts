@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Iproduct } from 'src/app/Models/iproduct';
+import { ProductsWithApiService } from 'src/app/Services/products-with-api.service';
 import { ProductsService } from 'src/app/Services/products.service';
 
 @Component({
@@ -30,8 +31,14 @@ export class ProductsListComponent implements OnInit {
     // console.log('In setter', value);
     // this.filteredProducts = this.performFilter(value);
     // Day4
-    this.filteredProducts = this.prdService.performFilter(value);
+    // this.filteredProducts = this.prdService.performFilter(value);
     // console.log(this.filteredProducts);
+    // Day5
+    this.prdApiService.getAllProducts().subscribe((data) => {
+      this.filteredProducts = data.filter((prd) =>
+        prd.name.toLocaleLowerCase().includes(value)
+      );
+    });
   }
 
   // Day3
@@ -46,7 +53,11 @@ export class ProductsListComponent implements OnInit {
 
   // Day4
   // inject
-  constructor(private prdService:ProductsService,private router:Router) {
+  constructor(
+    private prdService: ProductsService,
+    private router: Router,
+    private prdApiService: ProductsWithApiService
+  ) {
     // categoryID
     //1=> tables   , 2=>chairs    ,3=> tv units
     // this.productsList = [
@@ -147,7 +158,18 @@ export class ProductsListComponent implements OnInit {
     // this.filteredProducts = this.productsList;
 
     // Day4
-    this.filteredProducts=this.prdService.getAllProds();
+    // this.filteredProducts=this.prdService.getAllProds();
+
+    // Day5
+
+    this.prdApiService.getAllProducts().subscribe({
+      next: (data) => {
+        this.filteredProducts = data;
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
 
   toggleImage() {
@@ -177,8 +199,7 @@ export class ProductsListComponent implements OnInit {
   }
 
   // Day4
-  prdDetails(prdID:number){
-
-    this.router.navigate(['/productDetails',prdID])
+  prdDetails(prdID: number) {
+    this.router.navigate(['/productDetails', prdID]);
   }
 }

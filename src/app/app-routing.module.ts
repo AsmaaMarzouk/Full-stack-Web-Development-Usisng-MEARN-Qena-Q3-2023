@@ -7,6 +7,7 @@ import { AboutusComponent } from './Components/aboutus/aboutus.component';
 import { NotFoundPageComponent } from './Components/not-found-page/not-found-page.component';
 import { GroupOfRoutesComponent } from './Components/group-of-routes/group-of-routes.component';
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
+import { ObservablesAndOperatorsComponent } from './Components/observables-and-operators/observables-and-operators.component';
 // First Case
 // first match wins
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
   // parameter
   {path:'productDetails/:prodID',component: ProductDetailsComponent,title:'Product Details page'},
   { path: 'AboutUs', component: AboutusComponent, title: 'About Us page' },
+  { path: 'obs', component: ObservablesAndOperatorsComponent, title: 'Observable and operators page' },
 
   // 404 not found
   { path: '**', component: NotFoundPageComponent, title: '404 Page not found' },
