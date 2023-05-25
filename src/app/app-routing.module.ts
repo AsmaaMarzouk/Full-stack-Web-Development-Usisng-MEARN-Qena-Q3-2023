@@ -8,6 +8,8 @@ import { NotFoundPageComponent } from './Components/not-found-page/not-found-pag
 import { GroupOfRoutesComponent } from './Components/group-of-routes/group-of-routes.component';
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 import { ObservablesAndOperatorsComponent } from './Components/observables-and-operators/observables-and-operators.component';
+import { UserTemplateFormComponent } from './Components/User/user-template-form/user-template-form.component';
+import { UserReactiveFormComponent } from './Components/User/user-reactive-form/user-reactive-form.component';
 // First Case
 // first match wins
 const routes: Routes = [
@@ -29,6 +31,8 @@ const routes: Routes = [
   {path:'productDetails/:prodID',component: ProductDetailsComponent,title:'Product Details page'},
   { path: 'AboutUs', component: AboutusComponent, title: 'About Us page' },
   { path: 'obs', component: ObservablesAndOperatorsComponent, title: 'Observable and operators page' },
+  { path: 'userTemplate', component: UserTemplateFormComponent, title: 'Template Form page' },
+  { path: 'userReactive', component: UserReactiveFormComponent, title: 'Reactive Form page' },
 
   // 404 not found
   { path: '**', component: NotFoundPageComponent, title: '404 Page not found' },
