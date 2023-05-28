@@ -10,6 +10,8 @@ import { ProductDetailsComponent } from './Components/product-details/product-de
 import { ObservablesAndOperatorsComponent } from './Components/observables-and-operators/observables-and-operators.component';
 import { UserTemplateFormComponent } from './Components/User/user-template-form/user-template-form.component';
 import { UserReactiveFormComponent } from './Components/User/user-reactive-form/user-reactive-form.component';
+import { UserAuthComponent } from './Components/user-auth/user-auth.component';
+import { userAuthGuard } from './Guards/user-auth.guard';
 // First Case
 // first match wins
 const routes: Routes = [
@@ -21,19 +23,45 @@ const routes: Routes = [
     path: 'Products',
     component: ProductsListComponent,
     title: 'Products page',
+    canActivate: [userAuthGuard],
   },
   {
     path: 'ProductsParent',
     component: ProductParentComponent,
     title: 'Products Parent page',
+    canActivate: [userAuthGuard],
   },
   // parameter
-  {path:'productDetails/:prodID',component: ProductDetailsComponent,title:'Product Details page'},
+  {
+    path: 'productDetails/:prodID',
+    component: ProductDetailsComponent,
+    title: 'Product Details page',
+  },
   { path: 'AboutUs', component: AboutusComponent, title: 'About Us page' },
-  { path: 'obs', component: ObservablesAndOperatorsComponent, title: 'Observable and operators page' },
-  { path: 'userTemplate', component: UserTemplateFormComponent, title: 'Template Form page' },
-  { path: 'userReactive', component: UserReactiveFormComponent, title: 'Reactive Form page' },
+  {
+    path: 'obs',
+    component: ObservablesAndOperatorsComponent,
+    title: 'Observable and operators page',
+  },
+  {
+    path: 'userTemplate',
+    component: UserTemplateFormComponent,
+    title: 'Template Form page',
+  },
+  {
+    path: 'userReactive',
+    component: UserReactiveFormComponent,
+    title: 'Reactive Form page',
+  },
+  // Day7
+  { path: 'Login', component: UserAuthComponent, title: 'User login page' },
+  { path: 'logout', component: UserAuthComponent, title: 'User logout page' },
 
+  {
+    path: 'userOrder',
+    loadChildren: () => import('src/app/Components/user-orders/user-orders.module').then(m => m.UserOrdersModule)
+  },
+  // ###############################
   // 404 not found
   { path: '**', component: NotFoundPageComponent, title: '404 Page not found' },
   // wild card path => not found path

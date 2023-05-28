@@ -19,6 +19,7 @@ import { ObservablesAndOperatorsComponent } from './Components/observables-and-o
 import { HttpClientModule } from '@angular/common/http';
 import { UserTemplateFormComponent } from './Components/User/user-template-form/user-template-form.component';
 import { UserReactiveFormComponent } from './Components/User/user-reactive-form/user-reactive-form.component';
+import { UserAuthComponent } from './Components/user-auth/user-auth.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +36,8 @@ import { UserReactiveFormComponent } from './Components/User/user-reactive-form/
     ProductDetailsComponent,
     ObservablesAndOperatorsComponent,
     UserTemplateFormComponent,
-    UserReactiveFormComponent
+    UserReactiveFormComponent,
+    UserAuthComponent
   ],
   imports: [
     BrowserModule,

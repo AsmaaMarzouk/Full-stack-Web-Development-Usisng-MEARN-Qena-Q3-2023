@@ -19,6 +19,10 @@
                   <li class="nav-tab"><a routerLink="/obs" routerLinkActive="test">Obs</a></li>
                   <li class="nav-tab"><a routerLink="/userTemplate" routerLinkActive="test">User Template</a></li>
                   <li class="nav-tab"><a routerLink="/userReactive" routerLinkActive="test">User Reactive</a></li>
+                  <li class="nav-tab" [hidden]="userLog"><a routerLink="/Login" routerLinkActive="test" >Login</a></li>
+                  <li class="nav-tab" [hidden]="!userLog"><a routerLink="/logout" routerLinkActive="test" >Logout</a></li>
+                  <li class="nav-tab"><a routerLink="/userOrder/userCart" routerLinkActive="test">User Cart</a></li>
+                  <li class="nav-tab"><a routerLink="/userOrder/trackOrder" routerLinkActive="test">Track Order</a></li>
 
 
 
